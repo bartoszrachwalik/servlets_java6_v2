@@ -169,7 +169,7 @@
                 <version>2.3</version>
                 <configuration>
                     <failOnMissingWebXml>false</failOnMissingWebXml>
-                    <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                    <webXml>src/main/web/WEB-INF/web.xml</webXml>
                 </configuration>
             </plugin>
             <plugin>
