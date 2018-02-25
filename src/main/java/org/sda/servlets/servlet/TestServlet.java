@@ -1,12 +1,6 @@
 package org.sda.servlets.servlet;
 
 
-import org.sda.servlets.repository.UserRepository;
-import org.springframework.context.ApplicationContext;
-import org.springframework.web.context.support.WebApplicationContextUtils;
-
-import javax.servlet.ServletConfig;
-import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,22 +11,9 @@ import java.io.PrintWriter;
 @WebServlet(value = "/test")
 public class TestServlet extends HttpServlet {
 
-    private UserRepository studentRepository;
-
-    @Override
-    public void init(ServletConfig servletConfig) throws ServletException {
-        super.init(servletConfig);
-        ApplicationContext context =
-                WebApplicationContextUtils.getRequiredWebApplicationContext(
-                        this.getServletContext());
-        studentRepository = context.getBean(UserRepository.class);
-    }
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-
         PrintWriter out = response.getWriter();
-        out.println("Hello!");
-        out.println(studentRepository.findById(1));
+        out.println("Hello xxx!");
     }
 }
