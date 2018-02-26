@@ -13,7 +13,9 @@ public class TestServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        String param = request.getParameter("param1");
+
         PrintWriter out = response.getWriter();
-        out.println("Hello xxx!");
+        out.println("Hello " + param);
     }
 }
