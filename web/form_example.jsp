@@ -9,8 +9,8 @@
     Imie: <input type="text" name="firstName"> <br>
     Nazwisko <input type="text" name="lastName"> <br>
     Checkbox <input type="checkbox" name="check">
-    Radio <input type="radio" name="r">
-    <input type="radio" name="r"> <br>
+    Radio <input type="radio" name="r" value="one">
+    <input type="radio" name="r" value="two"> <br>
     <input type="submit" value="Submit">
 </form>
 

@@ -1,6 +1,8 @@
 package org.sda.servlets.servlet;
 
 
+import org.sda.util.Constans;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -8,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(value = "/test")
+@WebServlet(value = Constans.TEST_SERVLET)
 public class TestServlet extends HttpServlet {
 
     private long counter = 0;
