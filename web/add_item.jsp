@@ -21,7 +21,9 @@ Dodaj produkt:
     }
 
     String item = request.getParameter("item");
-    items.add(item);
+    if(item != null && !item.equals("")) {
+        items.add(item);
+    }
 
     out.println("<ul>");
     for(String s : items){
