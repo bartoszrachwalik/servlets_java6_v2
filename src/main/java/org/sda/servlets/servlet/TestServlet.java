@@ -11,6 +11,8 @@ import java.io.PrintWriter;
 @WebServlet(value = "/test")
 public class TestServlet extends HttpServlet {
 
+    private long counter = 0;
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String param = request.getParameter("param1");
