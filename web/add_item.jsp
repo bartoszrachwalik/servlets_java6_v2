@@ -18,6 +18,8 @@ Dodaj produkt:
     if(items == null){
         items = new ArrayList<>();
         session.setAttribute("items", items);
+//        pageContext.setAttribute("items", items);
+//        application.setAttribute("items", items);
     }
 
     String item = request.getParameter("item");
