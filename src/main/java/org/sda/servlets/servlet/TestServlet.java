@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(value = Constans.TEST_SERVLET)
 public class TestServlet extends HttpServlet {
@@ -21,5 +23,10 @@ public class TestServlet extends HttpServlet {
 
         PrintWriter out = response.getWriter();
         out.println("Hello " + param);
+
+        List<String> strings = new ArrayList<>();
+        for(String jakisString : strings){
+
+        }
     }
 }

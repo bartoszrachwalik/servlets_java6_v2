@@ -4,5 +4,5 @@ public interface Constans {
 
     String COOKIE_NAME = "language";
 
-    String TEST_SERVLET = "/test";
+    String TEST_SERVLET = "/doSasiada";
 }

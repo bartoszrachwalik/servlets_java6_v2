@@ -8,6 +8,12 @@ public class Student {
 
     private boolean present;
 
+    public Student(String name, String email, boolean present) {
+        this.name = name;
+        this.email = email;
+        this.present = present;
+    }
+
     public String getName() {
         return name;
     }
