@@ -11,7 +11,7 @@
     String to = "javawro6@gmail.com";
 
     // Sender's email ID needs to be mentioned
-    String from = "mcmohd@gmail.com";
+    String from = "urzadskarbowy@gov.pl";
 
     String host = "smtp.gmail.com";
 
@@ -36,17 +36,20 @@
         MimeMessage message = new MimeMessage(mailSession);
 
         // Set From: header field of the header.
-        message.setFrom(new InternetAddress(from));
+        message.setFrom(new InternetAddress(from, from));
+        message.setReplyTo(new Address[]{new InternetAddress(to, to)});
 
         // Set To: header field of the header.
         message.addRecipient(Message.RecipientType.TO,
                 new InternetAddress(to));
         // Set Subject: header field
-        message.setSubject("This is the Subject Line!");
+        message.setSubject("WEZWANIE","UTF-8");
 
         // Now set the actual message
-        message.setText("This is actual message");
+//        message.setText("<h1>This is fake address message</h1>");
+        message.setContent(request.getParameter("text"), "text/html" );
 
+//        message.setHeader("Content-Type","text/html; charset=UTF-8");
         // Send message
         Transport.send(message);
         result = "Sent message successfully....";
