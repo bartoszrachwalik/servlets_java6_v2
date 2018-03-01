@@ -6,8 +6,8 @@
    http://www.springframework.org/schema/context
    http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package = "org.sda.servlets.repository" />
-    <context:component-scan base-package = "org.sda.servlets.controller" />
+    <context:component-scan base-package = "org.sda.repository" />
+    <!--<context:component-scan base-package = "org.sda.controller" />-->
     <!--<context:component-scan base-package = "org.sda.services" />-->
     <!--<context:component-scan base-package = "org.sda.validators" />-->
 
@@ -23,22 +23,22 @@
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://localhost:5432/sda_db" />
-        <property name="username" value="sda_user" />
-        <property name="password" value="sda_password" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/postgres" />
+        <property name="username" value="postgres" />
+        <property name="password" value="postgres" />
     </bean>
 
     <bean id="entityManagerFactory"
           class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="persistenceUnitName" value="testPU" />
         <property name="dataSource" ref="dataSource" />
-        <property name="packagesToScan" value="org.sda.servlets.domain" />
+        <property name="packagesToScan" value="org.sda.domain" />
         <property name="jpaVendorAdapter">
             <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.hbm2ddl.auto">create-drop</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
                 <prop key="show_sql">true</prop>
             </props>

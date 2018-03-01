@@ -1,3 +1,4 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -6,8 +7,14 @@
     <title>Title</title>
 </head>
 <body>
+<%@include file="language_header.jsp"%>
+<%--<a href="add_item.jsp?langx=pl_PL">PL</a>--%>
+<%--<a href="add_item.jsp?langx=en_US">EN</a>--%>
 
-Dodaj produkt:
+<%--<fmt:setLocale value="${param.langx}" />--%>
+<%--<fmt:setBundle basename="labels" />--%>
+
+<fmt:message key="add.product" />:
 <form action="add_item.jsp">
     <input type="text" name="item">
     <input type="submit" value="Wyślij">

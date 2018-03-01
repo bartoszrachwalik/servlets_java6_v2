@@ -1,5 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
+
 <%@ page import="org.sda.dto.Student" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
@@ -53,5 +55,10 @@
         </tr>
     </c:forEach>
 </table>
+
+<br>
+<c:forEach items="${students}" var="student">
+    <t:custom student="${student}"></t:custom>
+</c:forEach>
 </body>
 </html>
