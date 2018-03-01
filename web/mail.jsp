@@ -47,7 +47,11 @@
 
         // Now set the actual message
 //        message.setText("<h1>This is fake address message</h1>");
-        message.setContent(request.getParameter("text"), "text/html" );
+        String text = request.getParameter("text");
+        if(text == null){
+            text = "Default message";
+        }
+        message.setContent(text, "text/html" );
 
 //        message.setHeader("Content-Type","text/html; charset=UTF-8");
         // Send message
