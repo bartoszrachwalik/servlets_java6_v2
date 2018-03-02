@@ -1,11 +1,21 @@
 BEGIN;
 
+
+CREATE TABLE public."user"
+(
+    id bigserial NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default",
+    firstname character varying(255) COLLATE pg_catalog."default",
+    lastname character varying(255) COLLATE pg_catalog."default",
+    CONSTRAINT user_pkey PRIMARY KEY (id)
+);
+
 CREATE TABLE public.course
 (
     id bigserial NOT NULL,
     name character varying(255) COLLATE pg_catalog."default",
     CONSTRAINT course_pkey PRIMARY KEY (id)
-)
+);
 
 CREATE TABLE public.password
 (
@@ -18,7 +28,7 @@ CREATE TABLE public.password
         REFERENCES public."user" (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
 
 CREATE TABLE public.review
@@ -32,16 +42,8 @@ CREATE TABLE public.review
         REFERENCES public.course (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
-CREATE TABLE public."user"
-(
-    id bigserial NOT NULL,
-    email character varying(255) COLLATE pg_catalog."default",
-    firstname character varying(255) COLLATE pg_catalog."default",
-    lastname character varying(255) COLLATE pg_catalog."default",
-    CONSTRAINT user_pkey PRIMARY KEY (id)
-)
 
 CREATE TABLE public.user_course
 (
@@ -55,6 +57,6 @@ CREATE TABLE public.user_course
         REFERENCES public."user" (id) MATCH SIMPLE
         ON UPDATE NO ACTION
         ON DELETE NO ACTION
-)
+);
 
 COMMIT;
