@@ -75,10 +75,10 @@ public class UserRepository {
     public User save(User user, String passw) {
         if (user.getId() == null) {
             em.persist(user);
-            Password password = new Password();
-            password.setUser(user);
-            password.setValue(passw);
-            em.persist(password);
+//            Password password = new Password();
+//            password.setUser(user);
+//            password.setValue(passw);
+//            em.persist(password);
         } //nowy wpis
         else {
             throw new UnsupportedOperationException();
