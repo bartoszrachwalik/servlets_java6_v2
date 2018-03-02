@@ -7,6 +7,7 @@ import org.sda.repository.UserRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,6 +20,7 @@ import java.io.IOException;
 public class AddUserServlet extends HttpServlet {
 
     private UserRepository userRepository;
+
     static final Logger logger = LogManager.getLogger(TestServlet.class.getName());
 
     @Override
@@ -32,7 +34,7 @@ public class AddUserServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -43,6 +45,11 @@ public class AddUserServlet extends HttpServlet {
         user.setEmail(email);
 
         userRepository.save(user, null);
+
+        request.setAttribute("user", user);
+        RequestDispatcher requestDispatcher =
+                request.getRequestDispatcher("/pages/afterregistration.jsp");
+        requestDispatcher.forward(request, response);
     }
 
 
