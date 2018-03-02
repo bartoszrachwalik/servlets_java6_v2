@@ -6,7 +6,7 @@
 <body>
 
 <form action="/adduser">
-    <input type="text" name="firstName">
+    Imie: <input type="text" name="firstName" placeholder="Imie">
     <input type="text" name="lastName">
     <input type="email" name="email">
     <input type="submit" value="Submit">
