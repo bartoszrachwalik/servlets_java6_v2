@@ -11,14 +11,21 @@
         <th>Imie</th>
         <th>Nazwisko</th>
         <th>Email</th>
+        <th>Usuń</th>
     </tr>
-<c:forEach items="${users}" var="user">
-    <tr>
-        <td>${user.firstName}</td>
-        <td>${user.lastName}</td>
-        <td>${user.email}</td>
-    </tr>
-</c:forEach>
+    <c:forEach items="${users}" var="user">
+        <tr>
+            <td>${user.firstName}</td>
+            <td>${user.lastName}</td>
+            <td>${user.email}</td>
+            <td>
+                <form action="/deleteuser" method="post">
+                    <input type="submit" value="remove">
+                    <input type="hidden" name="id" value="${user.id}">
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
 </table>
 
 </body>
