@@ -11,7 +11,7 @@
         <th>Imie</th>
         <th>Nazwisko</th>
         <th>Email</th>
-        <th>Usuń</th>
+        <th>Akcje</th>
     </tr>
     <c:forEach items="${users}" var="user">
         <tr>
@@ -21,6 +21,10 @@
             <td>
                 <form action="/deleteuser" method="post">
                     <input type="submit" value="remove">
+                    <input type="hidden" name="id" value="${user.id}">
+                </form>
+                <form action="/getuserdata" method="get">
+                    <input type="submit" value="edit">
                     <input type="hidden" name="id" value="${user.id}">
                 </form>
             </td>
