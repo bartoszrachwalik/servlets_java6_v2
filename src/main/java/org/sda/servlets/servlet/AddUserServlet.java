@@ -4,6 +4,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sda.domain.User;
 import org.sda.repository.UserRepository;
+import org.sda.util.UserValidation;
+import org.sda.util.ValidationUtil;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
 
@@ -14,7 +16,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.ConstraintViolation;
 import java.io.IOException;
+import java.util.Set;
 
 @WebServlet(value = "/adduser")
 public class AddUserServlet extends HttpServlet {
@@ -44,12 +48,21 @@ public class AddUserServlet extends HttpServlet {
         user.setLastName(lastName);
         user.setEmail(email);
 
-        userRepository.save(user, null);
+        Set<ConstraintViolation<User>> violations = ValidationUtil.validateInternal(user);
+        for(ConstraintViolation<User> violation: violations){
+            logger.info(violation.getPropertyPath() + " : " + violation.getMessage());
+        }
 
-        request.setAttribute("user", user);
-        RequestDispatcher requestDispatcher =
-                request.getRequestDispatcher("/pages/afterregistration.jsp");
-        requestDispatcher.forward(request, response);
+        if (violations.isEmpty()) {
+            userRepository.save(user, null);
+
+            request.setAttribute("user", user);
+            RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/pages/afterregistration.jsp");
+            requestDispatcher.forward(request, response);
+        }else {
+            response.sendRedirect("/pages/registration.jsp");
+        }
     }
 
 

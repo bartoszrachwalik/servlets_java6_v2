@@ -11,7 +11,9 @@ public class UserValidation {
     }
 
     public static boolean validate(User user) {
-        return true;
+        return user.getFirstName() != null && !user.getFirstName().isEmpty()
+                && user.getLastName() != null && !user.getLastName().isEmpty()
+                && user.getEmail() != null && !user.getEmail().isEmpty();
     }
 
 

@@ -8,7 +8,7 @@
 <form action="/adduser">
     Imie: <input type="text" name="firstName" placeholder="Imie" required>
     <input type="text" name="lastName" required>
-    <input type="email" name="email" required>
+    <input type="email" name="email">
     <input type="submit" value="Submit">
 </form>
 

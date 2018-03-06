@@ -1,6 +1,10 @@
 package org.sda.domain;
 
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,10 +17,20 @@ public class User {
     @GeneratedValue
     private Long id;
 
+    @NotBlank
+    @Length(max = 20)
+    @Column(name = "firstname", nullable = false, length = 20)
     private String firstName;
 
+    @NotBlank
+    @Length(max = 30)
+    @Column(name = "lastname", nullable = false, length = 30)
     private String lastName;
 
+    @NotBlank
+    @Length(max = 30)
+    @Email
+    @Column(name = "email", nullable = false, length = 30, unique = true)
     private String email;
 
     @ManyToMany
