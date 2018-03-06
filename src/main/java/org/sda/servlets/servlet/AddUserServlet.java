@@ -49,8 +49,9 @@ public class AddUserServlet extends HttpServlet {
         user.setEmail(email);
 
         Set<ConstraintViolation<User>> violations = ValidationUtil.validateInternal(user);
-        for(ConstraintViolation<User> violation: violations){
-            logger.info(violation.getPropertyPath() + " : " + violation.getMessage());
+        for (ConstraintViolation<User> violation : violations) {
+            logger.info(violation.getPropertyPath() + " : " + violation.getMessage()
+            + " " + violation.getMessageTemplate());
         }
 
         if (violations.isEmpty()) {
@@ -60,8 +61,13 @@ public class AddUserServlet extends HttpServlet {
             RequestDispatcher requestDispatcher =
                     request.getRequestDispatcher("/pages/afterregistration.jsp");
             requestDispatcher.forward(request, response);
-        }else {
-            response.sendRedirect("/pages/registration.jsp");
+        } else {
+
+            request.setAttribute("errors",violations);
+            request.setAttribute("user",user);
+            RequestDispatcher requestDispatcher =
+                    request.getRequestDispatcher("/pages/registration.jsp");
+            requestDispatcher.forward(request, response);
         }
     }
 

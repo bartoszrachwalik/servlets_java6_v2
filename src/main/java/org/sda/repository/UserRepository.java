@@ -4,6 +4,7 @@ package org.sda.repository;
 import org.sda.domain.Password;
 import org.sda.domain.User;
 
+import org.sda.util.TODO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -19,6 +20,7 @@ import java.util.List;
  * Pozwala na wykonywaie operacji na bazie danych
  */
 @Repository
+@TODO
 public class UserRepository {
 
     @PersistenceContext
@@ -35,7 +37,8 @@ public class UserRepository {
         em.remove(userToDelete);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
+    @TODO
     public List<User> findAll(){
         return (List<User>) em.createQuery("select u from User u").getResultList();
     }

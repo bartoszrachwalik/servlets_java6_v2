@@ -17,6 +17,7 @@ public class Password {
 
     @OneToOne(optional = false)
     @JoinColumn(name = "user_id", unique = true)
+    @NotNull
     private User user;
 
     public Long getId() {
