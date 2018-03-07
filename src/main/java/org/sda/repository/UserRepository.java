@@ -75,13 +75,10 @@ public class UserRepository {
     }
 
     @Transactional
-    public User save(User user, String passw) {
+    public User save(User user, Password passw) {
         if (user.getId() == null) {
             em.persist(user);
-//            Password password = new Password();
-//            password.setUser(user);
-//            password.setValue(passw);
-//            em.persist(password);
+            em.persist(passw);
         } //nowy wpis
         else {
             throw new UnsupportedOperationException();

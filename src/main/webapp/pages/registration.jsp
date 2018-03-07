@@ -12,9 +12,10 @@
 <%@include file="menu.jsp" %>
 
 <form action="/adduser">
-    Imie: <input type="text" name="firstName" placeholder="Imie" value="${user.firstName}">
-    <input type="text" name="lastName" value="${user.lastName}">
-    <input type="text" name="email" value="${user.email}">
+    Imie: <input type="text" name="firstName" placeholder="Imie" value="${user.firstName}"><br>
+    Nazwisko: <input type="text" name="lastName" value="${user.lastName}"><br>
+    E-mail: <input type="text" name="email" value="${user.email}"><br>
+    Hasło:<input type="password" name="password" required><br>
     <input type="submit" value="Submit">
 </form>
 

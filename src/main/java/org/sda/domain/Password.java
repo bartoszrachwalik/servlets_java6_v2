@@ -13,6 +13,8 @@ public class Password {
     @GeneratedValue
     private Long id;
 
+    @NotBlank
+    @Column(name = "value", nullable = false)
     private String value;
 
     @OneToOne(optional = false)

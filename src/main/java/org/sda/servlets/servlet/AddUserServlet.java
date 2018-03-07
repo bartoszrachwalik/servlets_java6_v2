@@ -2,6 +2,7 @@ package org.sda.servlets.servlet;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.sda.domain.Password;
 import org.sda.domain.User;
 import org.sda.repository.UserRepository;
 import org.sda.util.UserValidation;
@@ -42,11 +43,16 @@ public class AddUserServlet extends HttpServlet {
         String firstName = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
         User user = new User();
         user.setFirstName(firstName);
         user.setLastName(lastName);
         user.setEmail(email);
+
+        Password passwordClass= new Password();
+        passwordClass.setUser(user);
+        passwordClass.setValue(password);
 
         Set<ConstraintViolation<User>> violations = ValidationUtil.validateInternal(user);
         for (ConstraintViolation<User> violation : violations) {
@@ -55,7 +61,7 @@ public class AddUserServlet extends HttpServlet {
         }
 
         if (violations.isEmpty()) {
-            userRepository.save(user, null);
+            userRepository.save(user, passwordClass);
 
             request.setAttribute("user", user);
             RequestDispatcher requestDispatcher =
