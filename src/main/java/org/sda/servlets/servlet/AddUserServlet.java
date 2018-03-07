@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.sda.domain.Password;
 import org.sda.domain.User;
 import org.sda.repository.UserRepository;
+import org.sda.util.PasswordUtil;
 import org.sda.util.UserValidation;
 import org.sda.util.ValidationUtil;
 import org.springframework.context.ApplicationContext;
@@ -52,7 +53,7 @@ public class AddUserServlet extends HttpServlet {
 
         Password passwordClass= new Password();
         passwordClass.setUser(user);
-        passwordClass.setValue(password);
+        passwordClass.setValue(PasswordUtil.hashPassword(password));
 
         Set<ConstraintViolation<User>> violations = ValidationUtil.validateInternal(user);
         for (ConstraintViolation<User> violation : violations) {

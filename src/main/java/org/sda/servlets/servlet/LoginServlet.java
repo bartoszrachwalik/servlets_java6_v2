@@ -5,6 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sda.domain.Password;
 import org.sda.domain.User;
+import org.sda.util.PasswordUtil;
 
 import javax.persistence.NoResultException;
 import javax.servlet.ServletException;
@@ -13,12 +14,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.concurrent.Callable;
 
 @WebServlet("/userlogin")
 public class LoginServlet extends CommonServlet {
 
-    static final Logger logger = LogManager.getLogger(LoginServlet.class.getName());
+    private static final Logger logger = LogManager.getLogger(LoginServlet.class.getName());
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +31,7 @@ public class LoginServlet extends CommonServlet {
             if (user != null) {
                 Password passwordEntity = getUserRepository().findBy(user);
 
-                if (passwordEntity != null && passwordEntity.getValue().equals(password)) {
+                if (passwordEntity != null && PasswordUtil.checkPassword(password, passwordEntity.getValue())) {
                     HttpSession session = req.getSession();
                     session.setAttribute("loggedUser", user);
 
