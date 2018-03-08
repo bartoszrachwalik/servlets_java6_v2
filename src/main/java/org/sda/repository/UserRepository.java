@@ -26,6 +26,7 @@ public class UserRepository {
     @PersistenceContext
     EntityManager em;
 
+    @Transactional
     public User findById(long id) {
         return em.find(User.class, id);
     }
