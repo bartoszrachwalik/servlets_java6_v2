@@ -41,4 +41,9 @@ public class UserController {
 
         return "afterregistration";
     }
+
+    @RequestMapping(value = "/adduser3", method = RequestMethod.GET)
+    public String test(){
+        return null;
+    }
 }
