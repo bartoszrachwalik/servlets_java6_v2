@@ -20,7 +20,7 @@ Uzyskujemy wtedy 3 strony po 3 elementy
 - zacznij od przekazania parametrów w url np:
 /users?page=1&elements10
 
-i obsłóż odpowiendio na serwerze
+i obsłuż odpowiendnio na serwerze
 
 -> Przed kolejną częścią zadania musimy się zastanowić jak ma wyglądać odpowiedź z serwera! Sama lista z danymi nam nie wystarczy!
 Przeczytaj zadanie i zastanów się nad tym czego będziesz potrzebować.
