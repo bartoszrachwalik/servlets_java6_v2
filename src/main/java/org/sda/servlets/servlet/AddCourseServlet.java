@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sda.domain.Course;
 import org.sda.domain.User;
+import org.sda.repository.CourseRepository;
 import org.sda.util.ValidationUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -21,9 +22,7 @@ public class AddCourseServlet extends CommonServlet {
     private CourseRepository courseRepository;
     private static final Logger logger = LogManager.getLogger(TestServlet.class.getName());
 
-
     @Override
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String name = request.getParameter("name");
 
@@ -38,11 +37,11 @@ public class AddCourseServlet extends CommonServlet {
         }
 
         if (violations.isEmpty()) {
-            CourseRepository.save(course);
+            courseRepository.save(course);
 
             request.setAttribute("course", course);
             RequestDispatcher requestDispatcher =
-                    request.getRequestDispatcher("/pages/afteraddcourse.jsp");
+                    request.getRequestDispatcher("/pages/addedcourse.jsp");
             requestDispatcher.forward(request, response);
         } else {
             request.setAttribute("errors", violations);

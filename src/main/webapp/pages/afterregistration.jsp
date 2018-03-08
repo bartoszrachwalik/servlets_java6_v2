@@ -13,13 +13,8 @@
 </head>
 <body>
 <H1>User data:</H1>
-
 First name: ${userx.firstName} <br>
 Last name: ${userx.lastName} <br>
 e-mail: ${userx.email} <br>
-
-
-
-
 </body>
 </html>

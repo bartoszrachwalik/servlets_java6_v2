@@ -92,6 +92,4 @@ public class UserRepository {
         em.merge(user);
         return user;
     }
-
 }
-
