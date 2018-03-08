@@ -11,10 +11,10 @@
 
 <%@include file="menu.jsp" %>
 
-<form action="/adduser">
-    Imie: <input type="text" name="firstName" placeholder="Imie" value="${user.firstName}"><br>
-    Nazwisko: <input type="text" name="lastName" value="${user.lastName}"><br>
-    E-mail: <input type="text" name="email" value="${user.email}"><br>
+<form action="/adduser2">
+    Imie: <input type="text" name="firstName" placeholder="Imie" value="${userx.firstName}"><br>
+    Nazwisko: <input type="text" name="lastName" value="${userx.lastName}"><br>
+    E-mail: <input type="text" name="email" value="${userx.email}"><br>
     Hasło:<input type="password" name="password" required><br>
     <input type="submit" value="Submit">
 </form>

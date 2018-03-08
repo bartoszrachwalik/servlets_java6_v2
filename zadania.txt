@@ -1,0 +1,57 @@
+1. Obłużyć dodawanie kursów (zapis/wyświetlanie)
+1.a Po zdrobieniu zadania 2. dodać kolumnę wyświetlającą średnią ocen z recenzji dla kursu
+
+2. Obłużyć dodawanie recenzji (zapis/wyświetlanie)
+
+3. Wylogowanie użytkownika
+
+4. Wyświetlanie menu odpowiednio dla zalogowanego/niezalogowanego użytkownika
+
+A. Dodać stronicowanie (pageowanie) do widoków z tabelkami
+
+Użytkownik powinien móc określić ile wyników z zapytania chce zwrócić np. listę 9 użytkowników podzielić po 3
+1 2 3 | 4 5 6 | 7 8 9
+
+Opis problemu:
+https://unifaceinfo.com/docs/0907/Uniface_Library_HTML/ulibrary/DataPaging_F98CEE007FFE95EDEB72168557D3CBDF.html
+
+Uzyskujemy wtedy 3 strony po 3 elementy
+
+- zacznij od przekazania parametrów w url np:
+/users?page=1&elements10
+
+i obsłóż odpowiendio na serwerze
+
+-> Przed kolejną częścią zadania musimy się zastanowić jak ma wyglądać odpowiedź z serwera! Sama lista z danymi nam nie wystarczy!
+Przeczytaj zadanie i zastanów się nad tym czego będziesz potrzebować.
+
+- Zamiast podawać parametry ręcznie w url chcemy to obsługiwać automatycznie
+
+Dodaj przy tabelce formatkę z selectem (lista rozwijana) do wyboru ilości elementów na jednej stronie
+i dwa przyciski (poprzednia strona, kolejna strona)
+Wyślij dane i obsłuż
+
+- Koło przycisków powinna być informacja o tym na której znajdujemy się stronie
+
+- Przyciski 'Poprzednia strona' i 'Kolejna strona' powinny być aktywne tylko jeśli jest możliwe przejście na te strony - wyświetlając dane
+ze strony 0 nie mamy poprzedniej strony. będąc na ostatniej stronie nie mamy kolejnej.
+
+B. Dodać filtrowanie użytkowników po imieniu, nazwisku i emailu
+
+-> Aby dodać filtrowanie będziemy potrzebować trzech pól do których możemy wpisać dane - możemy do tego posłużyć się formularzem
+
+-> Dane muszą być odpowiednio obłużone przez serwer (co jeśli ktoś wyśle tylko imie po którym chce szukać?)
+
+-> Należy opowiednio przerobić zapytania
+
+- połacz rozwiązanie z zadaniem A
+
+C. Zrobić na serwerze walidację czy użytkowników podał unikalny email (Serwlety lub Spring)
+
+-> W przypadku springa użyć walidacji springowej, przykłady:
+http://fruzenshtein.com/spring-mvc-validator-initbinder/
+dokumentacja:
+https://docs.spring.io/spring/docs/4.1.x/spring-framework-reference/html/validation.html
+
+D. Zrób dwustopniowe uwierzytelnienie użytkownika (podczas logowania)
+Po podanieu poprawnego loginu i hasła aplikacja wysyła token (losowy ciąg znaków) na email który trzeba podać żeby przejść do aplikacji

@@ -14,9 +14,9 @@
 <body>
 <H1>User data:</H1>
 
-First name: ${user.firstName} <br>
-Last name: ${user.lastName} <br>
-e-mail: ${user.email} <br>
+First name: ${userx.firstName} <br>
+Last name: ${userx.lastName} <br>
+e-mail: ${userx.email} <br>
 
 
 
