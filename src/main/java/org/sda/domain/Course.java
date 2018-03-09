@@ -10,7 +10,7 @@ import java.util.List;
 @Table(name = "course")
 public class Course {
 
-//    Pole id, GeneratedValue zapewnia nam uzycie bazodanowej sekwencji do generowania kolejnych ID
+    //    Pole id, GeneratedValue zapewnia nam uzycie bazodanowej sekwencji do generowania kolejnych ID
     @Id
     @GeneratedValue
     private long id;
@@ -23,7 +23,7 @@ public class Course {
     @ManyToMany(mappedBy = "courses")
     List<User> users = new ArrayList<>();
 
-    protected Course() {
+    public Course() {
     }
 
     public Course(String name) {
