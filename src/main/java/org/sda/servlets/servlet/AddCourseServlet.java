@@ -18,7 +18,6 @@ import java.util.Set;
 @WebServlet(value = "/addcourse")
 public class AddCourseServlet extends CommonServlet {
 
-    private CourseRepository courseRepository;
     private static final Logger logger = LogManager.getLogger(TestServlet.class.getName());
 
     @Override
@@ -36,7 +35,7 @@ public class AddCourseServlet extends CommonServlet {
         }
 
         if (violations.isEmpty()) {
-            courseRepository.save(course);
+            getCourseRepository().save(course);
 
             request.setAttribute("course", course);
             RequestDispatcher requestDispatcher =
