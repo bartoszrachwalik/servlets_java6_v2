@@ -4,7 +4,10 @@
     <title>Added review</title>
 </head>
 <body>
-<H1></H1>
+<H1>Review</H1>
+
+Rating: ${review.rating}<br>
+Description: ${review.description}
 
 </body>
 </html>
