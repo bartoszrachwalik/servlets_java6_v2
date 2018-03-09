@@ -1,5 +1,6 @@
 package org.sda.servlets.servlet;
 
+import org.sda.repository.CourseRepository;
 import org.sda.repository.UserRepository;
 import org.springframework.context.ApplicationContext;
 import org.springframework.web.context.support.WebApplicationContextUtils;
@@ -11,9 +12,14 @@ import javax.servlet.http.HttpServlet;
 public class CommonServlet extends HttpServlet {
 
     private UserRepository userRepository;
+    private CourseRepository courseRepository;
 
     public UserRepository getUserRepository() {
         return userRepository;
+    }
+
+    public CourseRepository getCourseRepository() {
+        return courseRepository;
     }
 
     @Override

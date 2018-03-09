@@ -1,12 +1,12 @@
 package org.sda.repository;
 
 import org.sda.domain.Course;
-import org.sda.domain.User;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 public class CourseRepository {
@@ -17,6 +17,17 @@ public class CourseRepository {
     @Transactional(readOnly = true)
     public Course findById(long id) {
         return em.find(Course.class, id);
+    }
+
+    @Transactional
+    public void deleteById(long id) {
+        Course courseToDelete = findById(id);
+        em.remove(courseToDelete);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Course> findAll() {
+        return (List<Course>) em.createQuery("select c from Course c").getResultList();
     }
 
     @Transactional

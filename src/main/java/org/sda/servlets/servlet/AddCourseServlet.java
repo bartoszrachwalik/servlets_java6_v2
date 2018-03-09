@@ -3,7 +3,6 @@ package org.sda.servlets.servlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.sda.domain.Course;
-import org.sda.domain.User;
 import org.sda.repository.CourseRepository;
 import org.sda.util.ValidationUtil;
 
