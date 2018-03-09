@@ -29,5 +29,6 @@ public class CommonServlet extends HttpServlet {
                 WebApplicationContextUtils.getRequiredWebApplicationContext(
                         this.getServletContext());
         userRepository = context.getBean(UserRepository.class);
+        courseRepository = context.getBean(CourseRepository.class);
     }
 }

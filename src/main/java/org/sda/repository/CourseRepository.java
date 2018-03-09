@@ -1,6 +1,7 @@
 package org.sda.repository;
 
 import org.sda.domain.Course;
+import org.sda.util.TODO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +27,7 @@ public class CourseRepository {
     }
 
     @Transactional(readOnly = true)
+    @TODO
     public List<Course> findAll() {
         return (List<Course>) em.createQuery("select c from Course c").getResultList();
     }
