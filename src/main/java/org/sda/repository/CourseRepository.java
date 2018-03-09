@@ -1,6 +1,7 @@
 package org.sda.repository;
 
 import org.sda.domain.Course;
+import org.sda.domain.User;
 import org.sda.util.TODO;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,5 +41,17 @@ public class CourseRepository {
             throw new UnsupportedOperationException();
         }
         return course;
+    }
+
+    @Transactional
+    public Course update(Course course){
+        em.merge(course);
+        return course;
+    }
+
+    @Transactional
+    public Double averageRating(long idCourse){
+        return (Double) em.createQuery("select AVG(rating) from Review r where r.course= :idCourse")
+                .setParameter("idCourse", idCourse).getSingleResult();
     }
 }
