@@ -1,6 +1,5 @@
 package org.sda.servlets.servlet;
 
-import org.sda.domain.Review;
 import org.sda.repository.CourseRepository;
 import org.sda.repository.ReviewRepository;
 import org.sda.repository.UserRepository;
@@ -9,21 +8,25 @@ import org.springframework.web.context.support.WebApplicationContextUtils;
 
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 
+@WebServlet
 public class CommonServlet extends HttpServlet {
 
     private UserRepository userRepository;
     private CourseRepository courseRepository;
     private ReviewRepository reviewRepository;
 
-    public UserRepository getUserRepository() {
+    UserRepository getUserRepository() {
         return userRepository;
     }
-    public CourseRepository getCourseRepository() {
+
+    CourseRepository getCourseRepository() {
         return courseRepository;
     }
-    public ReviewRepository getReviewRepository() {
+
+    ReviewRepository getReviewRepository() {
         return reviewRepository;
     }
 
@@ -35,6 +38,6 @@ public class CommonServlet extends HttpServlet {
                         this.getServletContext());
         userRepository = context.getBean(UserRepository.class);
         courseRepository = context.getBean(CourseRepository.class);
-        reviewRepository= context.getBean(ReviewRepository.class);
+        reviewRepository = context.getBean(ReviewRepository.class);
     }
 }

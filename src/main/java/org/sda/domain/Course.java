@@ -15,6 +15,8 @@ public class Course {
     @GeneratedValue
     private long id;
 
+    @NotBlank
+    @Column(name = "name", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "course", fetch = FetchType.EAGER)

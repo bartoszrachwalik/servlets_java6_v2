@@ -15,6 +15,4 @@ public class UserValidation {
                 && user.getLastName() != null && !user.getLastName().isEmpty()
                 && user.getEmail() != null && !user.getEmail().isEmpty();
     }
-
-
 }
