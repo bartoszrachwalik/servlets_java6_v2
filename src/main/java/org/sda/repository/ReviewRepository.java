@@ -1,14 +1,15 @@
 package org.sda.repository;
 
-import org.sda.domain.Course;
 import org.sda.domain.Review;
 import org.sda.util.TODO;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class ReviewRepository {
     @PersistenceContext
     EntityManager em;
