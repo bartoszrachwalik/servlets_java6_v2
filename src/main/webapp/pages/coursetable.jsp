@@ -1,15 +1,20 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Display courses</title>
+    <%@include file="head.html" %>
 </head>
 <body>
+
+<%@include file="menu.jsp" %>
+
 <tr>
-    <th>Course name</th>
-    <th>Add review</th>
-    <th>Show review</th>
-    <th>Show average</th>
+    <th><fmt:message key="course.headers.name"/></th>
+    <th><fmt:message key="course.headers.review"/></th>
+    <th><fmt:message key="course.headers.display.review"/></th>
+    <th><fmt:message key="course.headers.avgrating"/></th>
 
 </tr>
 <c:forEach items="${courses}" var="course">
@@ -28,7 +33,7 @@
             </form>
         </td>
         <td>
-            ${average.get(course)}
+                ${average.get(course)}
         </td>
     </tr>
 </c:forEach>
